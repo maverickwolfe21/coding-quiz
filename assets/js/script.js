@@ -198,7 +198,11 @@ optionsUl.addEventListener("click", function (event) {
     }, 1000);
 
     // increment to next question
-    numClicks !== questions.length && numClicks++;
+    if (numClicks !== questions.length - 1) {
+      numClicks++;
+    } else {
+      time = 0;
+    }
 
     questionPrompt.textContent = questions[numClicks].question;
     option1.textContent = "1. " + questions[numClicks].choices[0];
