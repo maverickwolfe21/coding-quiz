@@ -121,6 +121,12 @@ var startTitle = document.querySelector("#start-title");
 var startBtn = document.querySelector("#start-btn");
 var startPrompt = document.querySelector("#start-prompt");
 
+var postGameContainer = document.querySelector("#post-game-container");
+let scoresFormEl = document.querySelector("#scores-form");
+let recapHeaderEl = document.querySelector("#recap-header");
+let recapScoreEl = document.querySelector("#recap-score");
+var results = document.querySelector("#results");
+
 var questionPrompt = document.querySelector("#question-prompt");
 var questionContainer = document.querySelector("#question-container");
 
@@ -168,6 +174,7 @@ option4.textContent = "4. " + questions[numClicks].choices[3];
 optionsUl.addEventListener("click", function (event) {
   if (numClicks === questions.length) {
     // take user to next page
+  } else if (time <= 0) {
   } else {
     //check for answer
     if (questions[numClicks].choices[questions[numClicks].correctIndex] === event.target.textContent.substring(3)) {
@@ -178,7 +185,11 @@ optionsUl.addEventListener("click", function (event) {
       results.textContent = "Incorrect!";
       results.classList.remove("hidden");
 
-      time = time - 10;
+      if (time < 10) {
+        time = 0;
+      } else {
+        time = time - 10;
+      }
       timer.textContent = "Time: " + time;
     }
 
