@@ -1,0 +1,95 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.hidden {
+  display: none;
+}
+
+.clicked {
+  background-color: green;
+}
+
+a {
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+  background-color: rgb(53, 28, 117);
+  border-radius: 8px;
+  padding: 8px;
+  color: white;
+  border: none;
+}
+
+button:hover {
+  background-color: rgb(170, 57, 223);
+}
+
+li {
+  cursor: pointer;
+  width: 300px;
+  background-color: rgb(53, 28, 117);
+  border-radius: 8px;
+  padding: 8px;
+  color: white;
+  border: none;
+  margin-bottom: 5px;
+}
+
+li:hover {
+  background-color: rgb(170, 57, 223);
+  opacity: 70%;
+}
+
+#results {
+  width: 350px;
+  border-top: 3px solid gray;
+  font-style: italic;
+}
+
+#question-prompt {
+  font-size: large;
+  font-weight: bold;
+}
+
+#question-container {
+  margin-top: 20px;
+}
+
+input {
+  padding: 5px;
+}
+
+#post-game-container {
+  margin-top: 50px;
+}
+
+#recap-header {
+  margin-bottom: 10px;
+}
+#recap-score {
+  margin-bottom: 10px;
+}
+
+#start-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 500px;
+  text-align: center;
+  line-height: 1.4;
+  gap: 15px;
+}
+
+button {
+  cursor: pointer;
+}
+
+.highscores {
+  color: rgb(170, 57, 223);
+}

@@ -112,6 +112,8 @@ var questions = [
 ];
 
 let time = 75;
+let numClicks = 0;
+let score = 0;
 
 var timer = document.querySelector("#timer");
 let textInput = document.querySelector("#input");
@@ -119,16 +121,69 @@ var startTitle = document.querySelector("#start-title");
 var startBtn = document.querySelector("#start-btn");
 var startPrompt = document.querySelector("#start-prompt");
 
+var questionPrompt = document.querySelector("#question-prompt");
+var questionContainer = document.querySelector("#question-container");
+
+var optionsUl = document.createElement("ul");
+var option1 = document.createElement("li");
+var option2 = document.createElement("li");
+var option3 = document.createElement("li");
+var option4 = document.createElement("li");
+
+optionsUl.append(option1, option2, option3, option4);
+questionContainer.append(optionsUl);
+
 startBtn.addEventListener("click", function () {
   startPrompt.classList.add("hidden");
   startBtn.classList.add("hidden");
   startTitle.classList.add("hidden");
 
+  // show question container
+  questionPrompt.classList.remove("hidden");
+  questionContainer.classList.remove("hidden");
+
   setInterval(function () {
     if (time <= 0) {
+      questionPrompt.classList.add("hidden");
+      questionContainer.classList.add("hidden");
+      postGameContainer.classList.remove("hidden");
+      recapHeaderEl.classList.remove("hidden");
+      recapScoreEl.textContent = "Your final score is " + score + ".";
+      recapScoreEl.classList.remove("hidden");
+      results.classList.add("hidden");
     } else {
       time--;
       timer.textContent = "Time: " + time;
     }
   }, 1000);
+});
+
+questionPrompt.textContent = questions[numClicks].question;
+
+option1.textContent = "1. " + questions[numClicks].choices[0];
+option2.textContent = "2. " + questions[numClicks].choices[1];
+option3.textContent = "3. " + questions[numClicks].choices[2];
+option4.textContent = "4. " + questions[numClicks].choices[3];
+
+optionsUl.addEventListener("click", function (event) {
+  if (numClicks === questions.length) {
+    // take user to next page
+  } else {
+    //check for answer
+    if (questions[numClicks].choices[questions[numClicks].correctIndex] === event.target.textContent.substring(3)) {
+      score++;
+    } else {
+      time = time - 10;
+      timer.textContent = "Time: " + time;
+    }
+
+    // increment to next question
+    numClicks++;
+
+    questionPrompt.textContent = questions[numClicks].question;
+    option1.textContent = "1. " + questions[numClicks].choices[0];
+    option2.textContent = "2. " + questions[numClicks].choices[1];
+    option3.textContent = "3. " + questions[numClicks].choices[2];
+    option4.textContent = "4. " + questions[numClicks].choices[3];
+  }
 });
