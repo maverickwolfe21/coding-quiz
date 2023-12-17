@@ -1,0 +1,44 @@
+* {
+  /* margin: 0; */
+}
+
+.container {
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+ol {
+  width: 20vw;
+}
+
+li:nth-child(odd) {
+  background-color: lightpink;
+}
+
+.buttons-container {
+  display: flex;
+  gap: 10px;
+}
+
+button {
+  cursor: pointer;
+  background-color: rgb(53, 28, 117);
+  border-radius: 8px;
+  padding: 8px;
+  color: white;
+  border: none;
+}
+
+button:hover {
+  background-color: rgb(170, 57, 223);
+}
+
+.hidden {
+  display: none;
+}
+
+#score-msg {
+  margin-top: 3px;
+}

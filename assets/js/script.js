@@ -173,7 +173,7 @@ option4.textContent = "4. " + questions[numClicks].choices[3];
 
 optionsUl.addEventListener("click", function (event) {
   if (numClicks === questions.length) {
-    // take user to next page
+    time = 0;
   } else if (time <= 0) {
   } else {
     //check for answer
@@ -198,7 +198,7 @@ optionsUl.addEventListener("click", function (event) {
     }, 1000);
 
     // increment to next question
-    numClicks++;
+    numClicks !== questions.length && numClicks++;
 
     questionPrompt.textContent = questions[numClicks].question;
     option1.textContent = "1. " + questions[numClicks].choices[0];
@@ -207,3 +207,29 @@ optionsUl.addEventListener("click", function (event) {
     option4.textContent = "4. " + questions[numClicks].choices[3];
   }
 });
+
+function handleSubmit(e) {
+  e.preventDefault();
+  if (textInput.value === "") {
+    return;
+  }
+
+  let prevScores = JSON.parse(localStorage.getItem("scores"));
+  let currentScore = {
+    name: textInput.value,
+    score,
+  };
+  if (prevScores && prevScores.length > 0) {
+    prevScores.push(currentScore);
+    localStorage.setItem("scores", JSON.stringify(prevScores));
+  } else {
+    let scores = [];
+    scores.push(currentScore);
+    localStorage.setItem("scores", JSON.stringify(scores));
+  }
+
+  textInput.value = "";
+  window.location.href = "./scores.html";
+}
+
+scoresFormEl.addEventListener("submit", handleSubmit);
