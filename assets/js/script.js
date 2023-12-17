@@ -111,3 +111,24 @@ var questions = [
   },
 ];
 
+let time = 75;
+
+var timer = document.querySelector("#timer");
+let textInput = document.querySelector("#input");
+var startTitle = document.querySelector("#start-title");
+var startBtn = document.querySelector("#start-btn");
+var startPrompt = document.querySelector("#start-prompt");
+
+startBtn.addEventListener("click", function () {
+  startPrompt.classList.add("hidden");
+  startBtn.classList.add("hidden");
+  startTitle.classList.add("hidden");
+
+  setInterval(function () {
+    if (time <= 0) {
+    } else {
+      time--;
+      timer.textContent = "Time: " + time;
+    }
+  }, 1000);
+});
