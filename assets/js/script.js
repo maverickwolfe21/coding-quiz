@@ -172,10 +172,19 @@ optionsUl.addEventListener("click", function (event) {
     //check for answer
     if (questions[numClicks].choices[questions[numClicks].correctIndex] === event.target.textContent.substring(3)) {
       score++;
+      results.textContent = "Correct!";
+      results.classList.remove("hidden");
     } else {
+      results.textContent = "Incorrect!";
+      results.classList.remove("hidden");
+
       time = time - 10;
       timer.textContent = "Time: " + time;
     }
+
+    setTimeout(function () {
+      results.classList.add("hidden");
+    }, 1000);
 
     // increment to next question
     numClicks++;
