@@ -4,6 +4,26 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Coding Quiz</title>
+    <link rel="stylesheet" href="./assets/css/style.css" />
   </head>
-  <body></body>
+  <body>
+    <div style="display: flex; flex-direction: row; align-items: center; justify-content: space-between; padding: 10px 10px">
+      <a class="highscores" href="./scores.html">View high scores</a>
+      <p id="timer"></p>
+    </div>
+    <div style="display: flex; flex-direction: column; align-items: center; justify-content: center">
+      <div id="start-container">
+        <h1 id="start-title">Coding Quiz Challenge</h1>
+        <p id="start-prompt">
+          Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score/time
+          by ten seconds!
+        </p>
+        <button id="start-btn">Start Quiz</button>
+      </div>
+      <p id="question-prompt" class="hidden"></p>
+      <div id="question-container" class="hidden"></div>
+      <div id="results" class="hidden"></div>
+    </div>
+  </body>
+  <script src="./assets/js/script.js"></script>
 </html>
