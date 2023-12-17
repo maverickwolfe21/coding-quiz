@@ -9,6 +9,11 @@ var clearBtn = document.querySelector("#clear-btn");
 let prevScores = JSON.parse(localStorage.getItem("scores"));
 
 function renderScores() {
+  prevScores = JSON.parse(localStorage.getItem("scores"));
+
+  scoresOl.classList.add("hidden");
+  scoreMsgEl.classList.remove("hidden");
+
   scoresOl.innerHTML = "";
   if (prevScores) {
     let sortedScores = prevScores.sort((a, b) => b.score - a.score);
@@ -26,4 +31,8 @@ renderScores();
 
 backBtn.addEventListener("click", () => {
   window.location.href = "./index.html";
+});
+clearBtn.addEventListener("click", () => {
+  localStorage.removeItem("scores");
+  renderScores();
 });
